@@ -1,0 +1,51 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    You are given a{% if is_js %}n array{% else %} list{% endif %}(unordered) of tasks. Each task is as string, which incudes a start and end of task and has a view <b>"hh:mm-hh:mm"</b>. You function must return a sorted chronologically filtered {% if is_js %}array{% else %}list{% endif %} of tasks, which can be scheduled without overlapping. For this purpose, you are also given a <b>mode</b> as {% if is_js %}a number{% else %}an integer{% endif %}, which tells you the rule of choosing non-overlapping tasks.
+</p>
+<p>
+    Modes:
+    <ul>
+        <li><b>1</b>: earliest start among available, (if a few variants) shortest duration;</li>
+        <li><b>2</b>: earliest start among available, (if a few variants) longest duration;</li>
+        <li><b>3</b>: longest <b>total</b> duration of chosen tasks, (if a few variants) larger number of tasks done, (if a few variants) lexicographically;</li>
+        <li><b>4</b>: larger number of tasks done, (if a few variants) longest <b>total</b> duration of chosen tasks, (if a few variants) lexicographically.</li>
+    </ul>
+</p>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Input:</strong> A{% if is_js %}n array{% else %} list{% endif %} of tasks as strings.
+</p>
+
+<p>
+    <strong>Output:</strong> A sorted filtered {% if is_js %}array{% else %}list{% endif %} of tasks as strings. 
+</p>
+
+
+<p>
+    <strong>Examples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->

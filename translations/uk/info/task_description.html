@@ -1,0 +1,51 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Тобі дано несортований {% if is_js %}масив{% else %}список{% endif %} завдань. Кожне завдання це рядок, який включає початок і кінець завдання і має вигляд <b>"hh:mm-hh:mm"</b>. Твоя функція повинна повернути відсортований хронологічно, відфільтрований {% if is_js %}масив{% else %}список{% endif %} завдань, які можуть бути заплановані без накладок. З цією метою, тобі також дано режим <b>mode</b> як ціле число, який вказує на правило вибору завдань, що не накладаються.
+</p>
+<p>
+    Режими:
+    <ul>
+        <li><b>1</b>: найраніший початок з доступних, (якщо декілька варіантів) найкоротше;</li>
+        <li><b>2</b>: найраніший початок з доступних, (якщо декілька варіантів) найдовше;</li>
+        <li><b>3</b>: найдовша <b>загальна</b> тривалість обраних завдань, (якщо декілька варіантів) більша кількість виконаних завдань, (якщо декілька варіантів) лексикографічно;</li>
+        <li><b>4</b>: більша кількість виконаних завдань, (якщо декілька варіантів) найдовша <b>загальна</b> тривалість обраних завдань, (якщо декілька варіантів) лексикографічно.</li>
+    </ul>
+</p>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Вхідні дані:</strong> {% if is_js %}Масив{% else %}Список{% endif %} завдань як рядків.
+</p>
+
+<p>
+    <strong>Вихідні дані:</strong> Сортований відфільтрований {% if is_js %}масив{% else %}список{% endif %} завдань як рядки. 
+</p>
+
+
+<p>
+    <strong>Приклади:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
