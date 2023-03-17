@@ -1,7 +1,7 @@
 <!-- Describe task in general -->
 
 <p style="text-align: justify;">
-    You are given a{% if is_js %}n array{% else %} list{% endif %}(unordered) of tasks. Each task is as string, which incudes a start and end of task and has a view <b>"hh:mm-hh:mm"</b>. You function must return a sorted chronologically filtered {% if is_js %}array{% else %}list{% endif %} of tasks, which can be scheduled without overlapping. For this purpose, you are also given a <b>mode</b> as {% if is_js %}a number{% else %}an integer{% endif %}, which tells you the rule of choosing non-overlapping tasks.
+    You are given an unordered {% if is_js %}array{% else %} list{% endif %} of tasks. Each task is as string, which incudes a start and end of task and has a view <b>"hh:mm-hh:mm"</b>. Tasks are unique. You function must return chronologically sorted, filtered {% if is_js %}array{% else %}list{% endif %} of tasks, which can be scheduled without overlapping. For this purpose, you are also given a <b>mode</b> as {% if is_js %}a number{% else %}an integer{% endif %}, which tells you the rule of choosing non-overlapping tasks.
 </p>
 <p>
     Modes:
@@ -12,10 +12,13 @@
         <li><b>4</b>: larger number of tasks done, (if a few variants) longest <b>total</b> duration of chosen tasks, (if a few variants) lexicographically.</li>
     </ul>
 </p>
-
-<!-- <p style="text-align: center;">
-    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
-</p> -->
+<p style="text-align: justify;">
+    At animation tasks are always sorted as earliest start + shortest duration. Each task is positioned on the first "row", where it is not overlapping with the previous task in a "row". If the current task is overlapping with all existed "rows" - the new "row" is started.
+    For example, for the input <b>[['09:00-10:00', '09:50-10:10', '10:00-11:00', '09:00-09:20', '10:50-11:10'], 2]</b>, the animation (solved) would be the following:   
+</p>
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 150px"/>
+</p>
 
 <!-- Explain input and output values -->
 <p>
