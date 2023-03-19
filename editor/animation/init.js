@@ -5,10 +5,12 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
         function scheduleModeBuilder(dataInput, dataAnswer) {
             
             const [periods, mode] = dataInput;
-            modeDescr = {
-                1: "m 1: earliest + shortest", 2: "m 2: earliest + longest",
-                3: "m 3: total length + number tasks", 4: "m 4: number tasks + total length"
-            }
+            modeDescr = ["",
+                "m 1: earliest + shortest",
+                "m 2: earliest + longest",
+                "m 3: total length + number tasks",
+                "m 4: number tasks + total length"
+            ];
             
             const colorDark = "#294270";
             const colorOrange = "#FABA00";
@@ -37,14 +39,11 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
             // sort array of tasks by earliest start + shortest duration
             perMins.sort((a, b) => {
 
-                if (a[0] < b[0]) {return -1}
-                    else if (a[0] > b[0]) {return 1}
-
-                const diffA = a[1] - a[0];
-                const diffB = b[1] - b[0];
-
-                if (diffA < diffB) {return -1}
-                    else {return 1}
+                if (a[0] < b[0]) { return -1 }
+                else if (a[0] > b[0]) { return 1 }
+                
+                if (a[1] - a[0] < b[1] - b[0]) { return -1 }
+                else { return 1 }
             });
 
             const minMin = perMins[0][0];
@@ -57,11 +56,11 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
                 var count = 0;
                 while (count < rows.length){
                     const lastPer = rows[count].length - 1;
-                    if (s - minMin >= rows[count][lastPer][1]) {break};
+                    if (s >= rows[count][lastPer][1]) { break };
                     count++;
                 }
-                if (count < rows.length){rows[count].push([s - minMin, e - minMin])}
-                    else {rows.push([[s - minMin, e - minMin]])}
+                if (count < rows.length) { rows[count].push([s, e]) }
+                else { rows.push([[s, e]]) }   
             }
 
             const sizeX = totalMin * cellLenMult + indent * 3;
@@ -72,30 +71,34 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
                 // writing mode
                 paper.text(sizeX / 2, indent, modeDescr[mode]);
                 // drawing scale 
-                paper.path(`M${indent} ${indent * 3.5}H${totalMin * cellLenMult + indent}`).attr({ "stroke": colorDark });
+                paper
+                    .path(`M${indent} ${indent * 3.5}H${totalMin * cellLenMult + indent}`)
+                    .attr({ "stroke": colorDark });
                 // drawing vertical lines
                 for (let i = minMin; i <= maxMin; i++){
                     const rem = i % 60;
                     if (i % 10) { continue }
                     const rems = {0: 19, 10: 32, 20: 32, 30: 27, 40: 32, 50: 32}
-                    paper.path(`M${indent + (i - minMin) * cellLenMult} ${indent * 3.5}V${rems[rem]}`).attr({ "stroke": colorDark })
+                    paper
+                        .path(`M${indent + (i - minMin) * cellLenMult} ${indent * 3.5}V${rems[rem]}`)
+                        .attr({ "stroke": colorDark })
                 }   
                 // drawing tasks as rectangles
                 for (var i = 0; i < rows.length; i++){
                     const shiftY = i * cellHigh;
                     for (const [s, e] of rows[i]) {
-                        paper.rect(s*cellLenMult + indent, shiftY + indent*4, (e - s)*cellLenMult, cellHigh).attr(dataAnswer.includes(times.get("".concat(s + minMin, e + minMin))) ? attrRectPath : attrRect);
+                        paper
+                            .rect((s - minMin) * cellLenMult + indent, shiftY + indent * 4, (e - s) * cellLenMult, cellHigh)
+                            .attr(dataAnswer.includes(times.get("".concat(s, e))) ? attrRectPath : attrRect);
                     }
                 }
             }
         };
-        var io = new extIO({
+        new extIO({
             animation: function ($expl, data) {
-                var canvas = new scheduleModeBuilder(data.in, data.ext.answer);
-                canvas.draw($expl[0])
+                new scheduleModeBuilder(data.in, data.ext.answer).draw($expl[0])
             }
-        });
-        io.start()
+        }).start()
     }
 );
 
