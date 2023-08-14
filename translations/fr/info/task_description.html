@@ -1,0 +1,54 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    On vous donne un tableau non ordonné {% if is_js %}{% else %} liste{% endif %} de tâches. Chaque tâche est une chaîne de caractères qui comprend un début et une fin de tâche et une vue <b>"hh:mm-hh:mm"</b>. Les tâches sont uniques. Votre fonction doit renvoyer des tâches triées chronologiquement et filtrées {% if is_js %}array{% else %}list{% endif %}, qui peuvent être planifiées sans se chevaucher. À cette fin, vous disposez également d'un <b>mode</b> comme {% if is_js %}un nombre{% else %}un entier{% endif %}, qui vous indique la règle de sélection des tâches qui ne se chevauchent pas.
+</p>
+<p>
+    Modes:
+    <ul>
+        <li><b>1</b>: début au plus tôt parmi les tâches disponibles, (s'il y a quelques variantes) durée la plus courte;</li>
+        <li><b>2</b>les modes:: début au plus tôt parmi ceux disponibles, (si quelques variantes) durée la plus longue;</li>
+        <li><b>3</b>: durée la plus longue <b>total</b> des tâches choisies, (si quelques variantes) plus grand nombre de tâches accomplies, (si quelques variantes) au plus tôt;</li>
+        <li><b>4</b>durée la plus longue;: plus grand nombre de tâches effectuées, (si quelques variantes) durée la plus longue <b>total</b> des tâches choisies, (si quelques variantes) la plus précoce.</li>
+    </ul>
+</p>
+<p style="text-align: justify;">
+    Lors de l'animation, les tâches sont toujours triées comme suit: début le plus tôt + durée la plus courte. Chaque tâche est positionnée sur la première "ligne", lorsqu'elle n'empiète pas sur la tâche précédente dans une "ligne". Si la tâche actuelle chevauche toutes les "rangées" existantes, la nouvelle "rangée" est lancée.
+    Par exemple, pour l'entrée <b>[['09:00-10:00', '09:50-10:10', '10:00-11:00', '09:00-09:20', '10:50-11:10'], 2]</b>, l'animation (résolue) serait la suivante:   
+</p>
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 150px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> Un tableau{% if is_js %}n{% else %} liste{% endif %} de tâches sous forme de chaînes de caractères.
+</p>
+
+<p>
+   <strong>Sortie:</strong> Un tableau {% if is_js %}trié et filtré{% else %}liste{% endif %} de tâches sous forme de chaînes de caractères. 
+</p>
+
+
+<p>
+    <strong>Exemples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
