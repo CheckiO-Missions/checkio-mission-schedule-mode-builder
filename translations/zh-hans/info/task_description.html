@@ -1,0 +1,54 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    您将得到一个无序的{% if is_js %}数组{% else %} 任务列表{% endif %} 。每个任务都是字符串，包含任务的开始和结束，并有一个视图<b>"hh:mm-hh:mm"</b> 。任务是唯一的。您的函数必须返回按时间顺序排列的、经过筛选的{% if is_js %}数组{% else %}列表{% endif %} 任务，这些任务可以在不重叠的情况下进行调度。为此，您还会得到一个<b>mode</b> 作为{% if is_js %}一个数字{% else %}一个整数{% endif %} ，它告诉您选择不重叠任务的规则。
+</p>
+<p>
+    模式：
+    <ul>
+        <li><b>1</b>最短持续时间：在可供选择的任务中最早开始（如果有几个变体）；</li>
+        <li><b>2</b>持续时间：在可供选择的模式中最早开始，（如果有几个变式）持续时间最长；</li>
+        <li><b>3</b>：所选任务的<b>total</b> 持续时间最长，（如果有几个变式）完成的任务数较多，（如果有几个变式）最早；</li>
+        <li><b>4</b>：已完成的任务数较多，（如果有几个变体）所选任务的<b>total</b> 持续时间最长，（如果有几个变体）最早。</li>
+    </ul>
+</p>
+<p style="text-align: justify;">
+    在动画中，任务总是按最早开始 + 最短持续时间排序。每项任务都被定位在第一 "行"，即不与前一项任务重叠的 "行"。如果当前任务与所有已存在的 "行 "重叠，则启动新的 "行"。
+    例如，对于输入<b>[['09:00-10:00', '09:50-10:10', '10:00-11:00', '09:00-09:20', '10:50-11:10'], 2]</b> ，动画（已解决）如下：   
+</p>
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 150px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入：</strong>{% if is_js %}n 数组{% else %} 任务列表{% endif %} ，以字符串表示。
+</p>
+
+<p>
+   <strong>输出：</strong>经过排序筛选的{% if is_js %}数组{% else %}任务列表{% endif %} ，以字符串形式显示。 
+</p>
+
+
+<p>
+    <strong>示例</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
