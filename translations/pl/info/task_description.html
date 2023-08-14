@@ -1,0 +1,54 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Otrzymują Państwo nieuporządkowaną {% if is_js %}tablicę{% else %} listę{% endif %} zadań. Każde zadanie ma postać ciągu znaków, który zawiera początek i koniec zadania oraz widok <b>"hh:mm-hh:mm"</b>. Zadania są unikalne. Funkcja musi zwrócić chronologicznie posortowaną, przefiltrowaną {% if is_js %}tablicę{% else %}listę{% endif %} zadań, które można zaplanować bez nakładania się. W tym celu otrzymują Państwo również <b>mode</b> jako {% if is_js %}liczbę{% else %}liczbę całkowitą{% endif %}, która określa zasadę wyboru nienakładających się zadań.
+</p>
+<p>
+    Tryby:
+    <ul>
+        <li><b>1</b>: najwcześniejszy start spośród dostępnych, (jeśli kilka wariantów) najkrótszy czas trwania;</li>
+        <li><b>2</b>: najwcześniejszy start spośród dostępnych, (jeśli kilka wariantów) najdłuższy czas trwania;</li>
+        <li><b>3</b>: najdłuższy <b>total</b> czas trwania wybranych zadań, (jeśli kilka wariantów) większa liczba wykonanych zadań, (jeśli kilka wariantów) najwcześniej;</li>
+        <li><b>4</b>większa liczba wykonanych zadań, (jeśli kilka wariantów) najdłuższy <b>total</b> czas trwania wybranych zadań, (jeśli kilka wariantów) najwcześniej.</li>
+    </ul>
+</p>
+<p style="text-align: justify;">
+    Podczas animacji zadania są zawsze sortowane jako najwcześniejsze rozpoczęcie + najkrótszy czas trwania. Każde zadanie jest umieszczane w pierwszym "rzędzie", w którym nie pokrywa się z poprzednim zadaniem w "rzędzie". Jeśli bieżące zadanie pokrywa się ze wszystkimi istniejącymi "rzędami" - uruchamiany jest nowy "rząd".
+    Na przykład, dla wejścia <b>[['09:00-10:00', '09:50-10:10', '10:00-11:00', '09:00-09:20', '10:50-11:10'], 2]</b>, animacja (rozwiązana) wyglądałaby następująco:   
+</p>
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 150px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Wejście:</strong> A{% if is_js %}n array{% else %} list{% endif %} of tasks as strings.
+</p>
+
+<p>
+   <strong>Dane wyjściowe:</strong> Posortowana, przefiltrowana tablica {% if is_js %}{% else %} lista{% endif %} zadań w postaci ciągów znaków. 
+</p>
+
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
