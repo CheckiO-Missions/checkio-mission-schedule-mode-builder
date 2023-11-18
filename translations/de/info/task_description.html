@@ -1,0 +1,54 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Sie erhalten eine ungeordnete {% if is_js %}Array{% else %} Liste{% endif %} von Aufgaben. Jede Aufgabe ist eine Zeichenkette, die einen Start und ein Ende der Aufgabe enthält und eine Ansicht <b>"hh:mm-hh:mm"</b> hat. Die Aufgaben sind eindeutig. Ihre Funktion muss ein chronologisch sortiertes, gefiltertes {% if is_js %}Array{% else %}Liste{% endif %} von Aufgaben zurückgeben, die ohne Überschneidungen geplant werden können. Zu diesem Zweck erhalten Sie auch eine <b>mode</b> als {% if is_js %}eine Zahl{% else %}eine ganze Zahl{% endif %}, die Ihnen die Regel für die Auswahl der sich nicht überschneidenden Aufgaben mitteilt.
+</p>
+<p>
+    Modi:
+    <ul>
+        <li><b>1</b>: frühester Start unter den verfügbaren, (wenn einige Varianten) kürzeste Dauer;</li>
+        <li><b>2</b>: frühester Start unter den verfügbaren, (wenn einige Varianten) längste Dauer;</li>
+        <li><b>3</b>: längste <b>total</b> Dauer der ausgewählten Aufgaben, (bei einigen Varianten) größere Anzahl erledigter Aufgaben, (bei einigen Varianten) früheste;</li>
+        <li><b>4</b>: größere Anzahl erledigter Aufgaben, (wenn einige Varianten) längste <b>total</b> Dauer der ausgewählten Aufgaben, (wenn einige Varianten) früheste.</li>
+    </ul>
+</p>
+<p style="text-align: justify;">
+    Bei der Animation werden die Aufgaben immer nach frühestem Beginn + kürzester Dauer sortiert. Jede Aufgabe wird in der ersten "Reihe" positioniert, in der sie sich nicht mit der vorherigen Aufgabe in einer "Reihe" überschneidet. Wenn sich die aktuelle Aufgabe mit allen vorhandenen "Reihen" überschneidet, wird die neue "Reihe" begonnen.
+    Für die Eingabe <b>[['09:00-10:00', '09:50-10:10', '10:00-11:00', '09:00-09:20', '10:50-11:10'], 2]</b> würde die Animation (gelöst) zum Beispiel folgendermaßen aussehen:   
+</p>
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 150px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> A{% if is_js %}n Array{% else %} Liste{% endif %} von Aufgaben als Strings <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Ein sortiertes gefiltertes {% if is_js %}Array{% else %}Liste{% endif %} von Aufgaben als Zeichenketten <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>(math is used everywhere)</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
